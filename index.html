@@ -9,6 +9,82 @@
   </head>
   <body>
     <canvas></canvas>
+    <div>
+      <!--
+      range로 해서 만들기 onchange로 하지않고 리스너에 "change"를 주면 동일하게 작동 가능
+      evnet.target이 input을 가르킴
+      -->
+      <input
+        placeholder="input width"
+        class="line-width"
+        type="text"
+        onchange="changeWidth()"
+      />
+      <input class="line-color" type="color" onchange="changeColor()" />
+      <div class="color-box">
+        <div
+          style="background-color: #1abc9c"
+          class="color-option"
+          data-color="#1abc9c"
+        ></div>
+        <div
+          style="background-color: #3498db"
+          class="color-option"
+          data-color="#3498db"
+        ></div>
+        <div
+          style="background-color: #34495e"
+          class="color-option"
+          data-color="#34495e"
+        ></div>
+        <div
+          style="background-color: #27ae60"
+          class="color-option"
+          data-color="#27ae60"
+        ></div>
+        <div
+          style="background-color: #8e44ad"
+          class="color-option"
+          data-color="#8e44ad"
+        ></div>
+        <div
+          style="background-color: #f1c40f"
+          class="color-option"
+          data-color="#f1c40f"
+        ></div>
+        <div
+          style="background-color: #e74c3c"
+          class="color-option"
+          data-color="#e74c3c"
+        ></div>
+        <div
+          style="background-color: #95a5a6"
+          class="color-option"
+          data-color="#95a5a6"
+        ></div>
+        <div
+          style="background-color: #d35400"
+          class="color-option"
+          data-color="#d35400"
+        ></div>
+        <div
+          style="background-color: #bdc3c7"
+          class="color-option"
+          data-color="#bdc3c7"
+        ></div>
+        <div
+          style="background-color: #2ecc71"
+          class="color-option"
+          data-color="#2ecc71"
+        ></div>
+        <div
+          style="background-color: #e67e22"
+          class="color-option"
+          data-color="#e67e22"
+        ></div>
+      </div>
+      <button class="mode-btn">Fill</button>
+    </div>
   </body>
   <script src="app.js"></script>
 </html>
