@@ -109,6 +109,7 @@ function changeWidth() {
 
   ctx.lineWidth = lineWidth;
 }
+
 // 선 색상 변경 시키기 //
 function changeColor() {
   console.log("hi");
@@ -178,9 +179,27 @@ function clickEraserBtn() {
   ctx.beginPath();
 }
 
+// 전부 지우기 //
 var clean = document.querySelector(".clean-btn");
 clean.addEventListener("click", cleanCanvas);
 function cleanCanvas() {
   ctx.fillStyle = "#FFFFFF";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+// 사진 업로드하여 화면에 띄우기 //
+
+const fileupload = document.querySelector(".upload-file");
+fileupload.addEventListener("change", uploadFile);
+
+function uploadFile(event) {
+  console.dir(event.target);
+  const file = event.target.files[0];
+  const url = URL.createObjectURL(file);
+  const img = new Image();
+  img.src = url;
+  img.onload = function () {
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    fileupload.value = null;
+  };
 }
