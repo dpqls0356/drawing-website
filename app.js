@@ -2,7 +2,7 @@ const canvas = document.querySelector("canvas");
 canvas.width = 800;
 canvas.height = 800;
 const ctx = canvas.getContext("2d");
-
+ctx.lineCap = "round";
 //////  집만들기  ///////
 // ctx.fillRect(200, 350, 50, 200);
 // ctx.fillRect(400, 350, 50, 200);
@@ -202,4 +202,31 @@ function uploadFile(event) {
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
     fileupload.value = null;
   };
+}
+
+// 텍스트 추가 //
+const textInput = document.querySelector(".add-text");
+canvas.addEventListener("dblclick", addText);
+function addText(event) {
+  const text = textInput.value;
+  if (text !== "") {
+    ctx.save();
+    ctx.lineWidth = 2;
+    ctx.font = "30px serif";
+    //   font로 사이즈와 글씨체 변경 가능
+    ctx.fillStyle = document.querySelector(".line-color").value;
+    ctx.fillText(text, event.offsetX, event.offsetY);
+    ctx.restore();
+  }
+}
+
+// 만든 이미지 저장하기 //
+const saveBtn = document.querySelector(".save-btn");
+saveBtn.addEventListener("click", saveImage);
+function saveImage() {
+  var saveImageUrl = canvas.toDataURL();
+  var a = document.createElement("a");
+  a.href = saveImageUrl;
+  a.download = "MyImage.jpg";
+  a.click();
 }
