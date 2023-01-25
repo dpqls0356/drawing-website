@@ -166,7 +166,7 @@ function onClickCanvas() {
 }
 
 // 지우개 //
-var eraser = document.querySelector(".eraser");
+var eraser = document.querySelector(".eraser-btn");
 eraser.addEventListener("click", clickEraserBtn);
 function clickEraserBtn() {
   if (ctx.fillStyle === "#000000") {
@@ -176,4 +176,11 @@ function clickEraserBtn() {
   }
 
   ctx.beginPath();
+}
+
+var clean = document.querySelector(".clean-btn");
+clean.addEventListener("click", cleanCanvas);
+function cleanCanvas() {
+  ctx.fillStyle = "#FFFFFF";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
