@@ -86,8 +86,6 @@ function onMove(event) {
     return;
   }
   ctx.moveTo(event.offsetX, event.offsetY);
-
-  console.log(event.offsetX, event.offsetY);
   //붓을 단순히 이동시키고 mousedown이 된다면 계속해서 moveTo로부터 lineTo까지 선을 그린다.
   //     ctx.moveTo(event.offsetX, event.offsetY);가 반복되다가
   //     isPainting이 true가 되면 75번라인부터 78번라인까지만 반복
@@ -108,15 +106,20 @@ canvas.addEventListener("mouseleave", onMouseUp);
 function changeWidth() {
   var lineWidth = document.querySelector(".line-width").value;
   document.querySelector(".line-width").value = "";
-  console.log(lineWidth);
 
   ctx.lineWidth = lineWidth;
 }
 // 선 색상 변경 시키기 //
 function changeColor() {
+  console.log("hi");
+  console.log(ctx.fillStyle, ctx.strokeStyle);
   color = document.querySelector(".line-color").value;
-  ctx.strokeStyle = color;
-  ctx.fillStyle = color;
+  if (isFilling) {
+    ctx.fillStyle = color;
+  } else {
+    ctx.strokeStyle = color;
+  }
+  console.log(ctx.fillStyle, ctx.strokeStyle);
 }
 
 // var selectColorOption = document.querySelector(".color-option");
@@ -132,28 +135,45 @@ selectColorOption.forEach((color) =>
   color.addEventListener("click", onSelectColorOption)
 );
 function onSelectColorOption(event) {
-  ctx.strokeStyle = event.target.dataset.color;
-  ctx.fillStyle = event.target.dataset.color;
+  if (isFilling) {
+    ctx.fillStyle = event.target.dataset.color;
+  } else {
+    ctx.strokeStyle = event.target.dataset.color;
+  }
   document.querySelector(".line-color").value = event.target.dataset.color;
 }
 
 // mode 변경 //
-var isFilling = "false";
+var isFilling = false;
 var modeBtn = document.querySelector(".mode-btn");
 
 modeBtn.addEventListener("click", onClickModeBtn);
 function onClickModeBtn() {
   if (isFilling) {
-    isFilling = false;
     modeBtn.innerHTML = "Fill";
+    isFilling = false;
   } else {
-    isFilling = true;
     modeBtn.innerHTML = "Draw";
+    isFilling = true;
   }
+  changeColor();
 }
 canvas.addEventListener("click", onClickCanvas);
 function onClickCanvas() {
   if (isFilling) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
   }
+}
+
+// 지우개 //
+var eraser = document.querySelector(".eraser");
+eraser.addEventListener("click", clickEraserBtn);
+function clickEraserBtn() {
+  if (ctx.fillStyle === "#000000") {
+    ctx.strokeStyle = "#FFFFFF";
+  } else {
+    ctx.strokeStyle = ctx.fillStyle;
+  }
+
+  ctx.beginPath();
 }
