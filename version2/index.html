@@ -13,14 +13,19 @@
       <button class="pencil">Pencil&nbsp✏️</button>
       <button class="eraser-btn">Eraser</button>
       <button class="clean-btn">Eraser Everything&nbsp🗑</button>
-      <label for="add-photo">Add Photo&nbsp📂</label>
-      <label for="text-box">Add Text</label>
+      <label class="add-photo-l" for="add-photo">Add Photo&nbsp📂</label>
+      <label class="add-text-l" for="add-text">Add Text</label>
     </div>
     <div class="paint-box">
       <canvas></canvas>
     </div>
     <div class="setting">
       <div class="pencil-setting">
+        <div>
+          <span>Current Line Width </span>
+          <i class="fa-solid fa-arrow-right"></i>
+          <span class="show-line-width"></span>
+        </div>
         <input
           class="line-width"
           type="range"
@@ -28,68 +33,151 @@
           max="30"
           onchange="changeWidth()"
         />
+        <span>Current Color</span>
+
         <input class="line-color" type="color" onchange="changeColor()" />
+
         <div class="color-box">
-          <div
-            style="background-color: #1abc9c"
-            class="color-option"
-            data-color="#1abc9c"
-          ></div>
-          <div
-            style="background-color: #3498db"
-            class="color-option"
-            data-color="#3498db"
-          ></div>
-          <div
-            style="background-color: #34495e"
-            class="color-option"
-            data-color="#34495e"
-          ></div>
-          <div
-            style="background-color: #27ae60"
-            class="color-option"
-            data-color="#27ae60"
-          ></div>
-          <div
-            style="background-color: #8e44ad"
-            class="color-option"
-            data-color="#8e44ad"
-          ></div>
-          <div
-            style="background-color: #f1c40f"
-            class="color-option"
-            data-color="#f1c40f"
-          ></div>
-          <div
-            style="background-color: #e74c3c"
-            class="color-option"
-            data-color="#e74c3c"
-          ></div>
-          <div
-            style="background-color: #95a5a6"
-            class="color-option"
-            data-color="#95a5a6"
-          ></div>
-          <div
-            style="background-color: #d35400"
-            class="color-option"
-            data-color="#d35400"
-          ></div>
-          <div
-            style="background-color: #bdc3c7"
-            class="color-option"
-            data-color="#bdc3c7"
-          ></div>
-          <div
-            style="background-color: #2ecc71"
-            class="color-option"
-            data-color="#2ecc71"
-          ></div>
-          <div
-            style="background-color: #e67e22"
-            class="color-option"
-            data-color="#e67e22"
-          ></div>
+          <div>
+            <div
+              style="background-color: #55efc4"
+              class="color-option"
+              data-color="#55efc4"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #81ecec"
+              class="color-option"
+              data-color="#81ecec"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #74b9ff"
+              class="color-option"
+              data-color="#74b9ff"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #a29bfe"
+              class="color-option"
+              data-color="#a29bfe"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #dfe6e9"
+              class="color-option"
+              data-color="#dfe6e9"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #00b894"
+              class="color-option"
+              data-color="#00b894"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #00cec9"
+              class="color-option"
+              data-color="#00cec9"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #0984e3"
+              class="color-option"
+              data-color="#0984e3"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #6c5ce7"
+              class="color-option"
+              data-color="#6c5ce7"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #b2bec3"
+              class="color-option"
+              data-color="#b2bec3"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #ffeaa7"
+              class="color-option"
+              data-color="#ffeaa7"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #fab1a0"
+              class="color-option"
+              data-color="#fab1a0"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #ff7675"
+              class="color-option"
+              data-color="#ff7675"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #fd79a8"
+              class="color-option"
+              data-color="#fd79a8"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #636e72"
+              class="color-option"
+              data-color="#636e72"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #fdcb6e"
+              class="color-option"
+              data-color="#fdcb6e"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #e17055"
+              class="color-option"
+              data-color="#e17055"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #d63031"
+              class="color-option"
+              data-color="#d63031"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #e84393"
+              class="color-option"
+              data-color="#e84393"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #2d3436"
+              class="color-option"
+              data-color="#2d3436"
+            ></div>
+          </div>
         </div>
       </div>
       <div class="image-setting">
@@ -102,10 +190,9 @@
       </div>
       <div class="text-setting">
         <input
-          id="text-box"
-          class="add-text"
+          id="add-text"
+          class="text-box"
           type="text"
-          accept="image/*"
           placeholder="Write and then double click!"
         />
       </div>
@@ -113,6 +200,10 @@
     </div>
   </body>
   <script src="app.js"></script>
+  <script
+    src="https://kit.fontawesome.com/b324382a19.js"
+    crossorigin="anonymous"
+  ></script>
 </html>
 <!-- 
   full fill

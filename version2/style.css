@@ -1,7 +1,11 @@
 @import "reset.css";
+* {
+  box-sizing: border-box;
+}
 body {
   display: flex;
   height: 100vh;
+  padding: 0px 10px;
   justify-content: center;
   align-items: center;
   background-color: rgb(255, 228, 228);
@@ -17,7 +21,7 @@ button {
 }
 /* 왼쪽 */
 .select-mode {
-  width: 25%;
+  width: 20%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,7 +29,7 @@ button {
 }
 .select-mode > * {
   background-color: rgb(254, 254, 254);
-  font-size: 28px;
+  font-size: 18px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -34,6 +38,12 @@ button {
   height: 10%;
   border-radius: 50px;
   box-shadow: 0px 5px 5px rgb(179, 167, 167);
+  min-width: 200px;
+}
+@media (min-width: 1600px) {
+  .select-mode > * {
+    font-size: 25px;
+  }
 }
 .select-mode > *:focus {
   animation: clickmotion 0.6s ease-in-out;
@@ -55,23 +65,71 @@ button {
   width: 50%;
   border: 2px solid black;
   background-color: white;
+  border: none;
+  border-radius: 70px;
 }
 /* 오른쪽 */
 .setting {
-  width: 25%;
+  width: 30%;
+  background-color: white;
+  border-radius: 70px;
+  padding: 50px 30px;
 }
-.setting > * {
+.setting > *:not(.pencil-setting, .save-btn) {
   display: none;
 }
+/* 펜슬 */
+.pencil-setting {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.pencil-setting > div:nth-child(1),
+.pencil-setting > span {
+  font-size: 18px;
+}
+.line-width {
+  height: 10%;
+}
 
+.line-color {
+  margin: 5% 0px;
+  width: 100%;
+  height: 50px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+}
+.line-color::-webkit-color-swatch {
+  border-radius: 15px;
+  border: none;
+}
 .color-box {
   display: grid;
   grid-template: repeat(2, 1fr) / repeat(5, 1fr);
-  grid-gap: 10px;
+  grid-row-gap: 20px;
+}
+.color-box > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .color-option {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   border: 5px solid rgb(255, 255, 255);
+}
+/* 버튼 */
+.save-btn {
+  width: 100%;
+  height: 10%;
+  text-align: center;
+  font-weight: 800;
+  font-size: 20px;
+  color: rgb(255, 10, 104);
+  border-radius: 30px;
+  background-color: pink;
 }

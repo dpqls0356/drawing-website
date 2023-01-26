@@ -7,7 +7,7 @@ canvas.height = document.querySelector(".paint-box").clientHeight;
 var color = "black";
 let isPainting = false;
 var usermode = "pencil";
-
+var count = 0;
 // 창 크기 변화시킬때마다 canvas크기 바꿔줘야함
 window.addEventListener("resize", handleWindowResize);
 function handleWindowResize() {
@@ -20,6 +20,7 @@ function handleWindowResize() {
 window.addEventListener("load", setLineWidth);
 function setLineWidth() {
   ctx.lineWidth = lineWidth;
+  document.querySelector(".show-line-width").innerHTML = lineWidth;
 }
 // 새로고침 시 굵기가 변하는 문제 해결하기 //
 
@@ -28,15 +29,40 @@ const mode = [
   "pencil",
   "background-color",
   "eraser-btn",
-  "cleanu-btn",
-  "add-photo",
+  "clean-btn",
+  "add-photo-l",
+  "add-text-l",
 ];
+const addPhotoBtn = document.querySelector(".add-photo-l");
+addPhotoBtn.addEventListener("click", modeChange);
+const addTextBtn = document.querySelector(".add-text-l");
+addTextBtn.addEventListener("click", modeChange);
+const pencilSetting = document.querySelector(".pencil-setting");
+const imageSetting = document.querySelector(".image-setting");
+const textSetting = document.querySelector(".text-setting");
 function modeChange(event) {
   var currentmode = event.target.className;
+  console.dir(event);
   for (var i = 0; i < mode.length; i++) {
     if (currentmode === mode[i]) {
       usermode = currentmode;
       changeColor();
+      if (usermode === "pencil" || usermode === "background-color") {
+        pencilSetting.style.display = "flex";
+        imageSetting.style.display = "none";
+        textSetting.style.display = "none";
+        if (usermode === "background-color") {
+          count++;
+        }
+      } else if (usermode === "add-photo-l") {
+        imageSetting.style.display = "flex";
+        pencilSetting.style.display = "none";
+        textSetting.style.display = "none";
+      } else if (usermode === "add-text-l") {
+        textSetting.style.display = "flex";
+        pencilSetting.style.display = "none";
+        imageSetting.style.display = "none";
+      }
       return;
     }
   }
@@ -73,6 +99,7 @@ canvas.addEventListener("mouseleave", onMouseUp);
 function changeWidth() {
   lineWidth = document.querySelector(".line-width").value;
   ctx.lineWidth = lineWidth;
+  document.querySelector(".show-line-width").innerHTML = lineWidth;
 }
 
 // 선 색상 변경 시키기 //
@@ -84,8 +111,12 @@ function changeColor() {
   } else if (usermode === "background-color") {
     ctx.fillStyle = color;
   } else if (usermode === "eraser-btn") {
-    ctx.strokeStyle = ctx.fillStyle;
-    console.log(ctx.strokeStyle, ctx.fillStyle);
+    if (count === 0) {
+      ctx.strokeStyle = "#FFFFFF";
+    } else {
+      ctx.strokeStyle = ctx.fillStyle;
+    }
+    ctx.beginPath();
   }
 }
 
@@ -113,7 +144,9 @@ function onSelectColorOption(event) {
 canvas.addEventListener("click", onClickCanvas);
 function onClickCanvas() {
   if (usermode === "background-color") {
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+    ctx.roundRect(0, 0, canvas.width, canvas.height, [60, 60, 60, 60]);
+    ctx.fill();
   }
 }
 
@@ -122,19 +155,16 @@ backgroundColorBtn.addEventListener("click", modeChange);
 
 // 지우개 //
 var eraser = document.querySelector(".eraser-btn");
-eraser.addEventListener("click", clickEraserBtn);
-function clickEraserBtn() {
-  usermode = "eraser-btn";
-  ctx.strokeStyle = ctx.fillStyle;
-  ctx.beginPath();
-}
+eraser.addEventListener("click", modeChange);
 
 // 전부 지우기 //
 var clean = document.querySelector(".clean-btn");
 clean.addEventListener("click", cleanCanvas);
 function cleanCanvas() {
   ctx.fillStyle = "#FFFFFF";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.beginPath();
+  ctx.roundRect(0, 0, canvas.width, canvas.height, [60, 60, 60, 60]);
+  ctx.fill();
 }
 
 // 사진 업로드하여 화면에 띄우기 //
