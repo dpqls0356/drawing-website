@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Drawing Web</title>
+  </head>
+  <body>
+    <div class="select-mode">
+      <button class="background-color">배경색상</button>
+      <button class="pencil">그리기</button>
+      <button class="eraser-btn">지우개</button>
+      <button class="clean-btn">전부지우기</button>
+      <label for="add-photo">사진추가</label>
+      <input
+        style="display: none"
+        id="add-photo"
+        class="upload-file"
+        type="file"
+        accept="image/*"
+      />
+      <label for="text-box"></label>
+      <input
+        id="text-box"
+        class="add-text"
+        type="text"
+        accept="image/*"
+        placeholder="Write and then double click!"
+      />
+    </div>
+    <div class="paint-box">
+      <canvas></canvas>
+    </div>
+    <div class="setting">
+      <div>
+        <input
+          class="line-width"
+          type="range"
+          min="1"
+          max="30"
+          onchange="changeWidth()"
+        />
+      </div>
+      <input class="line-color" type="color" onchange="changeColor()" />
+      <div class="color-box">
+        <div
+          style="background-color: #1abc9c"
+          class="color-option"
+          data-color="#1abc9c"
+        ></div>
+        <div
+          style="background-color: #3498db"
+          class="color-option"
+          data-color="#3498db"
+        ></div>
+        <div
+          style="background-color: #34495e"
+          class="color-option"
+          data-color="#34495e"
+        ></div>
+        <div
+          style="background-color: #27ae60"
+          class="color-option"
+          data-color="#27ae60"
+        ></div>
+        <div
+          style="background-color: #8e44ad"
+          class="color-option"
+          data-color="#8e44ad"
+        ></div>
+        <div
+          style="background-color: #f1c40f"
+          class="color-option"
+          data-color="#f1c40f"
+        ></div>
+        <div
+          style="background-color: #e74c3c"
+          class="color-option"
+          data-color="#e74c3c"
+        ></div>
+        <div
+          style="background-color: #95a5a6"
+          class="color-option"
+          data-color="#95a5a6"
+        ></div>
+        <div
+          style="background-color: #d35400"
+          class="color-option"
+          data-color="#d35400"
+        ></div>
+        <div
+          style="background-color: #bdc3c7"
+          class="color-option"
+          data-color="#bdc3c7"
+        ></div>
+        <div
+          style="background-color: #2ecc71"
+          class="color-option"
+          data-color="#2ecc71"
+        ></div>
+        <div
+          style="background-color: #e67e22"
+          class="color-option"
+          data-color="#e67e22"
+        ></div>
+      </div>
+      <button class="save-btn">Save</button>
+    </div>
+  </body>
+  <script src="app.js"></script>
+</html>
+<!-- 
+  full fill
+  draw
+  draw and fill
+  eraser
+  clean
+  text
+  photo
+ -->

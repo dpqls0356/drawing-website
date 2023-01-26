@@ -1,0 +1,41 @@
+@import "reset.css";
+body {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgb(255, 221, 227);
+}
+button {
+  all: unset;
+}
+.select-mode,
+.paint-box,
+.setting {
+  margin: 0px 20px;
+  height: 80vh;
+}
+.paint-box {
+  width: 50%;
+  border: 2px solid black;
+  background-color: white;
+}
+.select-mode {
+  background-color: white;
+  width: 25%;
+}
+.setting {
+  width: 25%;
+}
+.color-box {
+  display: grid;
+  grid-template: repeat(2, 1fr) / repeat(5, 1fr);
+  grid-gap: 10px;
+}
+.color-option {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid rgb(255, 255, 255);
+}
