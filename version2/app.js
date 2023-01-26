@@ -2,14 +2,13 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 var lineWidth = document.querySelector(".line-width").value;
 ctx.lineCap = "round";
-ctx.lineWidth = lineWidth;
 canvas.width = document.querySelector(".paint-box").clientWidth;
 canvas.height = document.querySelector(".paint-box").clientHeight;
 var color = "black";
 let isPainting = false;
 var usermode = "pencil";
 
-//창 크기 변화시킬때마다 canvas크기 바꿔줘야함
+// 창 크기 변화시킬때마다 canvas크기 바꿔줘야함
 window.addEventListener("resize", handleWindowResize);
 function handleWindowResize() {
   canvas.width = document.querySelector(".paint-box").clientWidth;
@@ -17,7 +16,11 @@ function handleWindowResize() {
   ctx.lineWidth = changeWidth();
   console.log(ctx.lineWidth);
 }
-
+// 새로고침하면 선 굵기가 자꾸 얇아져서 함수로 굵기 변경시켜줌
+window.addEventListener("load", setLineWidth);
+function setLineWidth() {
+  ctx.lineWidth = lineWidth;
+}
 // 새로고침 시 굵기가 변하는 문제 해결하기 //
 
 // 모드 변경 함수 //

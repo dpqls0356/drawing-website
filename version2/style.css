@@ -4,8 +4,7 @@ body {
   height: 100vh;
   justify-content: center;
   align-items: center;
-
-  background-color: rgb(255, 221, 227);
+  background-color: rgb(255, 228, 228);
 }
 button {
   all: unset;
@@ -16,18 +15,55 @@ button {
   margin: 0px 20px;
   height: 80vh;
 }
+/* 왼쪽 */
+.select-mode {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.select-mode > * {
+  background-color: rgb(254, 254, 254);
+  font-size: 28px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  height: 10%;
+  border-radius: 50px;
+  box-shadow: 0px 5px 5px rgb(179, 167, 167);
+}
+.select-mode > *:focus {
+  animation: clickmotion 0.6s ease-in-out;
+}
+@keyframes clickmotion {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(+10px);
+    box-shadow: 0px 1.5px 5px rgb(179, 167, 167);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+/* 가운데 */
 .paint-box {
   width: 50%;
   border: 2px solid black;
   background-color: white;
 }
-.select-mode {
-  background-color: white;
-  width: 25%;
-}
+/* 오른쪽 */
 .setting {
   width: 25%;
 }
+.setting > * {
+  display: none;
+}
+
 .color-box {
   display: grid;
   grid-template: repeat(2, 1fr) / repeat(5, 1fr);
