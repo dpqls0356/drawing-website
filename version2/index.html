@@ -196,7 +196,7 @@
         <p>Write and then double click!</p>
         <input id="add-text" class="text-box" type="text" placeholder="" />
         <div>
-          글씨 크기
+          <span>Letter Size</span>
           <input
             class="fontsize"
             type="range"
@@ -206,26 +206,20 @@
           />
         </div>
         <div>
-          <span>글씨체</span>
+          <span>Letter Shape</span>
           <select
             onchange="changefontshape()"
             name="wordshape"
             class="select-word-shape"
           >
-            <option value="">--select letter shape--</option>
             <option value="serif">serif</option>
             <option value="Arial">Arial</option>
             <option value="Courier New">Courier New</option>
           </select>
         </div>
         <div>
-          글씨색상
-          <input
-            onchange="changefontcolor()"
-            class="word-color"
-            type="color"
-            onchange="changeColor()"
-          />
+          <span>Letter Color</span>
+          <input onchange="changefontcolor()" class="word-color" type="color" />
         </div>
       </div>
       <button class="save-btn">Save</button>
