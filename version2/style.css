@@ -160,7 +160,7 @@ canvas {
   background-color: rgb(255, 10, 104);
   width: 30%;
   height: 10%;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   border-radius: 20px;

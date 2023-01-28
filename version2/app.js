@@ -184,6 +184,8 @@ function uploadFile(event) {
   document.querySelector(".preview-box").appendChild(img);
   const showimg = document.querySelector(".preview-img");
   showimg.addEventListener("dragend", moveImg);
+  const dragnotice = document.querySelector(".drag-notice");
+  dragnotice.style.display = "flex";
   // img.onload = function () {
   //   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
   //   fileupload.value = null;
