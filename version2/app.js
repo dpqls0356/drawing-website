@@ -33,6 +33,7 @@ const mode = [
   "clean-btn",
   "add-photo-l",
   "add-text-l",
+  "fill",
 ];
 const addPhotoBtn = document.querySelector(".add-photo-l");
 addPhotoBtn.addEventListener("click", modeChange);
@@ -48,7 +49,11 @@ function modeChange(event) {
     if (currentmode === mode[i]) {
       usermode = currentmode;
       changeColor();
-      if (usermode === "pencil" || usermode === "background-color") {
+      if (
+        usermode === "pencil" ||
+        usermode === "background-color" ||
+        usermode == "fill"
+      ) {
         pencilSetting.style.display = "flex";
         imageSetting.style.display = "none";
         textSetting.style.display = "none";
@@ -67,6 +72,7 @@ function modeChange(event) {
       return;
     }
   }
+  console.log(usermode);
 }
 // 그리기 모드 //
 const pencil = document.querySelector(".pencil");
@@ -77,6 +83,10 @@ function onMove(event) {
     ctx.lineTo(event.offsetX, event.offsetY);
     ctx.stroke();
 
+    return;
+  } else if (isPainting && usermode === "fill") {
+    console.log("here");
+    ctx.lineTo(event.offsetX, event.offsetY);
     return;
   }
   ctx.moveTo(event.offsetX, event.offsetY);
@@ -91,8 +101,15 @@ function onMouseDown() {
 }
 canvas.addEventListener("mouseup", onMouseUp);
 function onMouseUp() {
-  ctx.beginPath();
-  isPainting = false;
+  if (isPainting && (usermode === "pencil" || usermode === "eraser-btn")) {
+    ctx.beginPath();
+    isPainting = false;
+  } else if (usermode === "fill" && isPainting) {
+    console.log("he");
+    ctx.fill();
+    ctx.beginPath();
+    isPainting = false;
+  }
 }
 canvas.addEventListener("mouseleave", onMouseUp);
 
@@ -258,3 +275,6 @@ function changeRectBrush() {
   ctx.lineCap = "square";
   console.log(ctx.lineCap);
 }
+
+const fill = document.querySelector(".brush-mode div:last-child");
+fill.addEventListener("click", modeChange);
