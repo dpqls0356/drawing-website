@@ -13,8 +13,8 @@
       <button class="pencil">Pencil&nbsp✏️</button>
       <button class="eraser-btn">Eraser</button>
       <button class="clean-btn">Eraser Everything&nbsp🗑</button>
-      <label class="add-photo-l" for="add-photo">Add Photo&nbsp📂</label>
-      <label class="add-text-l" for="add-text">Add Text</label>
+      <label class="add-photo-l">Add Photo&nbsp📂</label>
+      <label class="add-text-l">Add Text</label>
     </div>
     <div class="paint-box">
       <canvas></canvas>
@@ -182,11 +182,15 @@
       </div>
       <div class="image-setting">
         <input
+          style="display: none"
           id="add-photo"
           class="upload-file"
           type="file"
           accept="image/*"
         />
+        <label for="add-photo">Select Photo</label>
+        <p>drag me!</p>
+        <div class="preview-box">preview</div>
       </div>
       <div class="text-setting">
         <input

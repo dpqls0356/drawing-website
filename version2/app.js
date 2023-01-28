@@ -178,14 +178,20 @@ function uploadFile(event) {
   const url = URL.createObjectURL(file);
   const img = new Image();
   img.src = url;
-  img.onload = function () {
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    fileupload.value = null;
-  };
+  img.classList = "preview-img";
+  console.log(img);
+  document.querySelector(".preview-box").innerHTML = "";
+  document.querySelector(".preview-box").appendChild(img);
+  const showimg = document.querySelector(".preview-img");
+  showimg.addEventListener("dragend", moveImg);
+  // img.onload = function () {
+  //   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+  //   fileupload.value = null;
+  // };
 }
 
 // 텍스트 추가 //
-const textInput = document.querySelector(".add-text");
+const textInput = document.querySelector(".text-box");
 canvas.addEventListener("dblclick", addText);
 function addText(event) {
   const text = textInput.value;
@@ -209,4 +215,11 @@ function saveImage() {
   a.href = saveImageUrl;
   a.download = "MyImage.jpg";
   a.click();
+}
+
+//
+function moveImg() {
+  const img = document.querySelector(".preview-img");
+  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+  fileupload.value = null;
 }
