@@ -19,6 +19,7 @@ function handleWindowResize() {
 // 새로고침하면 선 굵기가 자꾸 얇아져서 함수로 굵기 변경시켜줌
 window.addEventListener("load", setLineWidth);
 function setLineWidth() {
+  count = 0;
   ctx.lineWidth = lineWidth;
   document.querySelector(".show-line-width").innerHTML = lineWidth;
 }
@@ -145,7 +146,7 @@ canvas.addEventListener("click", onClickCanvas);
 function onClickCanvas() {
   if (usermode === "background-color") {
     ctx.beginPath();
-    ctx.roundRect(0, 0, canvas.width, canvas.height, [60, 60, 60, 60]);
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fill();
   }
 }
@@ -163,7 +164,7 @@ clean.addEventListener("click", cleanCanvas);
 function cleanCanvas() {
   ctx.fillStyle = "#FFFFFF";
   ctx.beginPath();
-  ctx.roundRect(0, 0, canvas.width, canvas.height, [60, 60, 60, 60]);
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.fill();
 }
 
@@ -236,9 +237,24 @@ function saveImage() {
   a.click();
 }
 
-//
+// 이미지 드래그
 function moveImg() {
   const img = document.querySelector(".preview-img");
   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
   fileupload.value = null;
+}
+
+//
+const circlebrush = document.querySelector(".brush-mode div:nth-child(1)");
+const rectbrush = document.querySelector(".brush-mode div:nth-child(2)");
+circlebrush.addEventListener("click", changeCircleBrush);
+rectbrush.addEventListener("click", changeRectBrush);
+
+function changeCircleBrush() {
+  ctx.lineCap = "round";
+  console.log(ctx.lineCap);
+}
+function changeRectBrush() {
+  ctx.lineCap = "square";
+  console.log(ctx.lineCap);
 }

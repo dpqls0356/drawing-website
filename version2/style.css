@@ -97,7 +97,23 @@ canvas {
 .line-width {
   height: 10%;
 }
-
+.brush-mode {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.brush-mode > div {
+  margin: 0px 20px;
+  width: 30%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: pink;
+  color: rgb(255, 10, 104);
+  border-radius: 30px;
+}
 .line-color,
 .word-color {
   margin: 5% 0px;
