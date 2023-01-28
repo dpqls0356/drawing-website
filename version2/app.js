@@ -179,10 +179,12 @@ eraser.addEventListener("click", modeChange);
 var clean = document.querySelector(".clean-btn");
 clean.addEventListener("click", cleanCanvas);
 function cleanCanvas() {
+  ctx.save();
   ctx.fillStyle = "#FFFFFF";
   ctx.beginPath();
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.fill();
+  ctx.restore();
 }
 
 // 사진 업로드하여 화면에 띄우기 //
