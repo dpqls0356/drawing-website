@@ -192,6 +192,11 @@ function uploadFile(event) {
   // };
 }
 
+var fontSize = "16";
+var fontShape = "serif";
+var fontsetting = `${fontSize}px ${fontShape}`;
+ctx.font = fontsetting;
+var fontColor = "#FFFFFF";
 // 텍스트 추가 //
 const textInput = document.querySelector(".text-box");
 canvas.addEventListener("dblclick", addText);
@@ -200,14 +205,26 @@ function addText(event) {
   if (text !== "") {
     ctx.save();
     ctx.lineWidth = 2;
-    ctx.font = "30px serif";
-    //   font로 사이즈와 글씨체 변경 가능
-    ctx.fillStyle = document.querySelector(".line-color").value;
     ctx.fillText(text, event.offsetX, event.offsetY);
     ctx.restore();
   }
 }
-
+// 텍스트 설정 변경 //
+function changefontsize() {
+  fontSize = document.querySelector(".fontsize").value;
+  fontsetting = `${fontSize}px ${fontShape}`;
+  ctx.font = fontsetting;
+}
+function changefontshape() {
+  let pickshape = document.querySelector(".select-word-shape");
+  fontShape = pickshape.options[pickshape.selectedIndex].value;
+  fontsetting = `${fontSize}px ${fontShape}`;
+  ctx.font = fontsetting;
+  console.log(ctx.font);
+}
+function changefontcolor() {
+  ctx.fillStyle = document.querySelector(".word-color").value;
+}
 // 만든 이미지 저장하기 //
 const saveBtn = document.querySelector(".save-btn");
 saveBtn.addEventListener("click", saveImage);

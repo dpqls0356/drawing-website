@@ -98,7 +98,8 @@ canvas {
   height: 10%;
 }
 
-.line-color {
+.line-color,
+.word-color {
   margin: 5% 0px;
   width: 100%;
   height: 50px;
@@ -108,7 +109,8 @@ canvas {
   background-color: transparent;
   border: none;
 }
-.line-color::-webkit-color-swatch {
+.line-color::-webkit-color-swatch,
+.word-color::-webkit-color-swatch {
   border-radius: 15px;
   border: none;
 }
@@ -194,4 +196,21 @@ label[for="add-photo"] {
 }
 label[for="add-photo"] {
   margin-top: 0px;
+}
+
+/* 텍스트추가 */
+.text-setting {
+  display: flex;
+  flex-direction: column;
+}
+.text-setting > p {
+  color: rgb(255, 10, 104);
+  font-size: 20px;
+  font-weight: 600;
+}
+.text-box {
+  margin: 5% 0px;
+  height: 30px;
+  border: 2px solid pink;
+  border-radius: 30px;
 }

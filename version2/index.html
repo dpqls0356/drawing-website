@@ -193,12 +193,40 @@
         <div class="preview-box">preview</div>
       </div>
       <div class="text-setting">
-        <input
-          id="add-text"
-          class="text-box"
-          type="text"
-          placeholder="Write and then double click!"
-        />
+        <p>Write and then double click!</p>
+        <input id="add-text" class="text-box" type="text" placeholder="" />
+        <div>
+          글씨 크기
+          <input
+            class="fontsize"
+            type="range"
+            min="1"
+            max="30"
+            onchange="changefontsize()"
+          />
+        </div>
+        <div>
+          <span>글씨체</span>
+          <select
+            onchange="changefontshape()"
+            name="wordshape"
+            class="select-word-shape"
+          >
+            <option value="">--select letter shape--</option>
+            <option value="serif">serif</option>
+            <option value="Arial">Arial</option>
+            <option value="Courier New">Courier New</option>
+          </select>
+        </div>
+        <div>
+          글씨색상
+          <input
+            onchange="changefontcolor()"
+            class="word-color"
+            type="color"
+            onchange="changeColor()"
+          />
+        </div>
       </div>
       <button class="save-btn">Save</button>
     </div>
