@@ -14,7 +14,6 @@ function handleWindowResize() {
   canvas.width = document.querySelector(".paint-box").clientWidth;
   canvas.height = document.querySelector(".paint-box").clientHeight;
   ctx.lineWidth = changeWidth();
-  console.log(ctx.lineWidth);
 }
 // 새로고침하면 선 굵기가 자꾸 얇아져서 함수로 굵기 변경시켜줌
 window.addEventListener("load", setLineWidth);
@@ -44,7 +43,7 @@ const imageSetting = document.querySelector(".image-setting");
 const textSetting = document.querySelector(".text-setting");
 function modeChange(event) {
   var currentmode = event.target.className;
-  console.dir(event);
+
   for (var i = 0; i < mode.length; i++) {
     if (currentmode === mode[i]) {
       usermode = currentmode;
@@ -72,7 +71,6 @@ function modeChange(event) {
       return;
     }
   }
-  console.log(usermode);
 }
 // 그리기 모드 //
 const pencil = document.querySelector(".pencil");
@@ -85,7 +83,6 @@ function onMove(event) {
 
     return;
   } else if (isPainting && usermode === "fill") {
-    console.log("here");
     ctx.lineTo(event.offsetX, event.offsetY);
     return;
   }
@@ -105,7 +102,6 @@ function onMouseUp() {
     ctx.beginPath();
     isPainting = false;
   } else if (usermode === "fill" && isPainting) {
-    console.log("he");
     ctx.fill();
     ctx.beginPath();
     isPainting = false;
@@ -123,7 +119,7 @@ function changeWidth() {
 // 선 색상 변경 시키기 //
 function changeColor() {
   color = document.querySelector(".line-color").value;
-  console.log(color, usermode);
+
   if (usermode === "pencil") {
     ctx.strokeStyle = color;
   } else if (usermode === "background-color") {
@@ -193,13 +189,12 @@ const fileupload = document.querySelector(".upload-file");
 fileupload.addEventListener("change", uploadFile);
 
 function uploadFile(event) {
-  console.dir(event.target);
   const file = event.target.files[0];
   const url = URL.createObjectURL(file);
   const img = new Image();
   img.src = url;
   img.classList = "preview-img";
-  console.log(img);
+
   document.querySelector(".preview-box").innerHTML = "";
   document.querySelector(".preview-box").appendChild(img);
   const showimg = document.querySelector(".preview-img");
@@ -240,7 +235,6 @@ function changefontshape() {
   fontShape = pickshape.options[pickshape.selectedIndex].value;
   fontsetting = `${fontSize}px ${fontShape}`;
   ctx.font = fontsetting;
-  console.log(ctx.font);
 }
 function changefontcolor() {
   ctx.fillStyle = document.querySelector(".word-color").value;
@@ -271,11 +265,13 @@ rectbrush.addEventListener("click", changeRectBrush);
 
 function changeCircleBrush() {
   ctx.lineCap = "round";
-  console.log(ctx.lineCap);
+  usermode = "pencil";
+  // ctx.beginPath();
 }
 function changeRectBrush() {
   ctx.lineCap = "square";
-  console.log(ctx.lineCap);
+  usermode = "pencil";
+  // ctx.beginPath();
 }
 
 const fill = document.querySelector(".brush-mode div:last-child");
