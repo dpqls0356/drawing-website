@@ -58,7 +58,8 @@
 <br/>&nbsp;&nbsp; + 사진을 선택 후 미리보기 기능을 통해 확인하고 드래그를 하여 그림판으로 옮김
 
 
-![gif](https://user-images.githubusercontent.com/83651122/215516630-7a1c5b05-30b8-4b07-8439-5d823a3b3f96.gif)
+![gif](https://user-images.githubusercontent.com/83651122/215521259-6402afce-8238-4d8c-94c2-672605a89b7b.gif)
+
 
 
 <br/>
@@ -68,7 +69,8 @@
 &nbsp;&nbsp; + 원하는 텍스트를 입력 후 그림판에 더블 클릭 시 삽입
 <br/>&nbsp;&nbsp; + 글씨체, 글씨 크기, 글자 색 선택 가능
 
-![gif](https://user-images.githubusercontent.com/83651122/215518001-61d10794-f92f-44b8-b41b-c2906836e80c.gif)
+![gif](https://user-images.githubusercontent.com/83651122/215522447-69932576-3efb-4005-b2e0-659870e642e9.gif)
+
 
 
 <br/>
