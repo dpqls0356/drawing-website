@@ -71,6 +71,7 @@ function modeChange(event) {
       return;
     }
   }
+  changeColor();
 }
 // 그리기 모드 //
 const pencil = document.querySelector(".pencil");
@@ -133,14 +134,14 @@ function changeColor() {
       ctx.strokeStyle = "#FFFFFF";
       backgroundcolor = "#FFFFFF";
     } else {
-      ctx.strokeStyle = ctx.fillStyle;
-      backgroundcolor = ctx.fillStyle;
+      ctx.strokeStyle = backgroundcolor;
     }
     ctx.beginPath();
   } else if (usermode === "fill") {
     ctx.fillStyle = color;
     fillcolor = color;
   }
+  console.log(ctx.fillStyle);
 }
 
 // var selectColorOption = document.querySelector(".color-option");
