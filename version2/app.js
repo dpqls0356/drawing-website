@@ -102,6 +102,7 @@ function onMouseUp() {
     ctx.beginPath();
     isPainting = false;
   } else if (usermode === "fill" && isPainting) {
+    ctx.fillStyle = fillcolor;
     ctx.fill();
     ctx.beginPath();
     isPainting = false;
@@ -117,6 +118,8 @@ function changeWidth() {
 }
 
 // 선 색상 변경 시키기 //
+var backgroundcolor = "#FFFFFFF";
+var fillcolor = document.querySelector(".line-color").value;
 function changeColor() {
   color = document.querySelector(".line-color").value;
 
@@ -124,13 +127,19 @@ function changeColor() {
     ctx.strokeStyle = color;
   } else if (usermode === "background-color") {
     ctx.fillStyle = color;
+    backgroundcolor = color;
   } else if (usermode === "eraser-btn") {
     if (count === 0) {
       ctx.strokeStyle = "#FFFFFF";
+      backgroundcolor = "#FFFFFF";
     } else {
       ctx.strokeStyle = ctx.fillStyle;
+      backgroundcolor = ctx.fillStyle;
     }
     ctx.beginPath();
+  } else if (usermode === "fill") {
+    ctx.fillStyle = color;
+    fillcolor = color;
   }
 }
 
@@ -151,6 +160,10 @@ function onSelectColorOption(event) {
     ctx.strokeStyle = event.target.dataset.color;
   } else if (usermode === "background-color") {
     ctx.fillStyle = event.target.dataset.color;
+    backgroundcolor = ctx.fillStyle;
+  } else if (usermode === "fill") {
+    ctx.fillStyle = event.target.dataset.color;
+    fillcolor = ctx.fillStyle;
   }
   document.querySelector(".line-color").value = event.target.dataset.color;
 }
@@ -159,6 +172,7 @@ canvas.addEventListener("click", onClickCanvas);
 function onClickCanvas() {
   if (usermode === "background-color") {
     ctx.beginPath();
+    ctx.fillStyle = backgroundcolor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fill();
   }
