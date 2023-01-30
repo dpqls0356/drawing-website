@@ -173,8 +173,8 @@ canvas {
   align-items: center;
 }
 .preview-img {
-  width: inherit;
-  height: inherit;
+  width: 300px;
+  height: 400px;
 }
 .image-setting > p {
   color: white;
