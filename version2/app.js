@@ -119,7 +119,7 @@ function changeWidth() {
 }
 
 // 선 색상 변경 시키기 //
-var backgroundcolor = "#FFFFFFF";
+var backgroundcolor = "#FFFFFF";
 var fillcolor = document.querySelector(".line-color").value;
 function changeColor() {
   color = document.querySelector(".line-color").value;
@@ -141,7 +141,6 @@ function changeColor() {
     ctx.fillStyle = color;
     fillcolor = color;
   }
-  console.log(ctx.fillStyle);
 }
 
 // var selectColorOption = document.querySelector(".color-option");
@@ -196,6 +195,7 @@ function cleanCanvas() {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.fill();
   ctx.restore();
+  count = 0;
 }
 
 // 사진 업로드하여 화면에 띄우기 //
