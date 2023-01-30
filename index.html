@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Drawing Web</title>
+  </head>
+  <body>
+    <div class="select-mode">
+      <button class="background-color">Background Color</button>
+      <button class="pencil">Pencil&nbsp✏️</button>
+      <button class="eraser-btn">Eraser</button>
+      <button class="clean-btn">Eraser Everything&nbsp🗑</button>
+      <label class="add-photo-l">Add Photo&nbsp📂</label>
+      <label class="add-text-l">Add Text</label>
+    </div>
+    <div class="paint-box">
+      <canvas></canvas>
+    </div>
+    <div class="setting">
+      <div class="pencil-setting">
+        <div>
+          <span>Current Line Width </span>
+          <i class="fa-solid fa-arrow-right"></i>
+          <span class="show-line-width"></span>
+        </div>
+        <input
+          class="line-width"
+          type="range"
+          min="1"
+          max="30"
+          onchange="changeWidth()"
+        />
+        <span id="currentcolor">Current Color</span>
+
+        <input class="line-color" type="color" onchange="changeColor()" />
+
+        <div class="color-box">
+          <div>
+            <div
+              style="background-color: #55efc4"
+              class="color-option"
+              data-color="#55efc4"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #81ecec"
+              class="color-option"
+              data-color="#81ecec"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #74b9ff"
+              class="color-option"
+              data-color="#74b9ff"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #a29bfe"
+              class="color-option"
+              data-color="#a29bfe"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #dfe6e9"
+              class="color-option"
+              data-color="#dfe6e9"
+            ></div>
+          </div>
+
+          <div>
+            <div
+              style="background-color: #ffeaa7"
+              class="color-option"
+              data-color="#ffeaa7"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #fab1a0"
+              class="color-option"
+              data-color="#fab1a0"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #ff7675"
+              class="color-option"
+              data-color="#ff7675"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #fd79a8"
+              class="color-option"
+              data-color="#fd79a8"
+            ></div>
+          </div>
+          <div>
+            <div
+              style="background-color: #636e72"
+              class="color-option"
+              data-color="#636e72"
+            ></div>
+          </div>
+        </div>
+        <div id="brushmode">Brush Shape and Mode</div>
+        <div class="brush-mode">
+          <div><i class="fa-solid fa-circle"></i></div>
+          <div><i class="fa-solid fa-square"></i></div>
+          <div class="fill">fill</div>
+        </div>
+      </div>
+      <div class="image-setting">
+        <input
+          style="display: none"
+          id="add-photo"
+          class="upload-file"
+          type="file"
+          accept="image/*"
+        />
+        <label for="add-photo">Select Photo</label>
+        <p class="drag-notice">drag me!</p>
+        <div class="preview-box">preview</div>
+      </div>
+      <div class="text-setting">
+        <p>Write and then double click!</p>
+        <input id="add-text" class="text-box" type="text" placeholder="" />
+        <div>
+          <span>Letter Size</span>
+          <input
+            class="fontsize"
+            type="range"
+            min="1"
+            max="30"
+            onchange="changefontsize()"
+          />
+        </div>
+        <div>
+          <span>Letter Shape</span>
+          <select
+            onchange="changefontshape()"
+            name="wordshape"
+            class="select-word-shape"
+          >
+            <option value="serif">serif</option>
+            <option value="Arial">Arial</option>
+            <option value="Courier New">Courier New</option>
+          </select>
+        </div>
+        <div>
+          <span>Letter Color</span>
+          <input onchange="changefontcolor()" class="word-color" type="color" />
+        </div>
+      </div>
+      <button class="save-btn">Save</button>
+    </div>
+  </body>
+  <script src="app.js"></script>
+  <script
+    src="https://kit.fontawesome.com/b324382a19.js"
+    crossorigin="anonymous"
+  ></script>
+</html>
+<!-- 
+  draw and fill
+  붓모양 변경
+ -->

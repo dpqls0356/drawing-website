@@ -1,0 +1,262 @@
+@import "reset.css";
+* {
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  height: 100vh;
+  padding: 0px 10px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 228, 228);
+}
+button {
+  all: unset;
+}
+.select-mode,
+.paint-box,
+.setting {
+  margin: 0px 20px;
+  height: 80vh;
+}
+/* 왼쪽 */
+.select-mode {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.select-mode > * {
+  background-color: rgb(254, 254, 254);
+  font-size: 18px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  height: 10%;
+  border-radius: 50px;
+  box-shadow: 0px 5px 5px rgb(179, 167, 167);
+  min-width: 200px;
+}
+@media (min-width: 1600px) {
+  .select-mode > * {
+    font-size: 25px;
+  }
+}
+.select-mode > *:focus {
+  animation: clickmotion 0.6s ease-in-out;
+}
+@keyframes clickmotion {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(+10px);
+    box-shadow: 0px 1.5px 5px rgb(179, 167, 167);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+/* 가운데 */
+.paint-box {
+  width: 50%;
+  border: 2px solid black;
+  background-color: white;
+  border: none;
+  border-radius: 11%;
+}
+canvas {
+  border-radius: 11%;
+}
+/* 오른쪽 */
+.setting {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30%;
+  background-color: white;
+  border-radius: 70px;
+  padding: 50px 30px;
+}
+.setting > *:not(.pencil-setting, .save-btn) {
+  display: none;
+}
+/* 펜슬 */
+.pencil-setting {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.pencil-setting > div:nth-child(1),
+.pencil-setting > span {
+  font-size: 18px;
+}
+.line-width {
+  height: 10%;
+}
+#brushmode {
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+.brush-mode {
+  display: flex;
+  height: 80%;
+  align-items: flex-start;
+  justify-content: center;
+}
+.brush-mode > div {
+  margin: 0px 20px;
+  width: 30%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: pink;
+  color: rgb(255, 10, 104);
+  border-radius: 30px;
+}
+#currentcolor {
+  margin-top: 20px;
+}
+.line-color,
+.word-color {
+  margin: 8px 0px;
+  width: 100%;
+  height: 60px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+}
+.line-color::-webkit-color-swatch,
+.word-color::-webkit-color-swatch {
+  border-radius: 30px;
+  border: none;
+}
+.color-box {
+  margin: 30px 0px;
+  display: grid;
+  grid-template: repeat(2, 1fr) / repeat(5, 1fr);
+  grid-row-gap: 20px;
+}
+.color-box > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.color-option {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid rgb(255, 255, 255);
+}
+/* 사진추가 */
+.image-setting {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.preview-box {
+  margin-top: 20px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.preview-img {
+  width: 300px;
+  height: 400px;
+}
+.image-setting > p {
+  color: white;
+  font-weight: 800;
+  position: absolute;
+  left: -20%;
+  top: 10%;
+  z-index: 10;
+  background-color: rgb(255, 10, 104);
+  width: 30%;
+  height: 10%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  border-bottom-right-radius: 0px;
+  animation: movenotice 1.5s linear infinite;
+  /* border-bottom-right-radius: 0px; */
+}
+@keyframes movenotice {
+  25% {
+    transform: translateY(10px);
+  }
+  75% {
+    transform: translateY(-10px);
+  }
+}
+/* 버튼 */
+.save-btn,
+label[for="add-photo"] {
+  margin-top: 20px;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 20px;
+  color: rgb(255, 10, 104);
+  border-radius: 30px;
+  background-color: pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+label[for="add-photo"] {
+  margin-top: 0px;
+}
+
+/* 텍스트추가 */
+.text-setting {
+  display: flex;
+  flex-direction: column;
+}
+.text-setting > p {
+  color: rgb(255, 10, 104);
+  font-size: 20px;
+  font-weight: 600;
+}
+.text-box {
+  margin: 5% 0px;
+  height: 45px;
+  padding-left: 30px;
+  border: 2px solid pink;
+  border-radius: 30px;
+  font-size: 20px;
+  font-weight: 300;
+  color: gray;
+}
+.text-setting > div {
+  display: flex;
+  flex-direction: column;
+}
+.text-setting > div > span {
+  font-size: 20px;
+  margin: 10px 0px;
+}
+.text-setting > div:last-child input {
+  margin: 0px;
+}
+
+select {
+  height: 35px;
+  border: 3px solid pink;
+  border-radius: 30px;
+  padding: 0px 10px;
+}
