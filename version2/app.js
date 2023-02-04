@@ -7,6 +7,7 @@ canvas.height = document.querySelector(".paint-box").clientHeight;
 var color = "black";
 let isPainting = false;
 var usermode = "pencil";
+//배경이 흰색인지 아닌지 판단
 var count = 0;
 // 창 크기 변화시킬때마다 canvas크기 바꿔줘야함
 window.addEventListener("resize", handleWindowResize);
@@ -18,7 +19,7 @@ function handleWindowResize() {
 // 새로고침하면 선 굵기가 자꾸 얇아져서 함수로 굵기 변경시켜줌
 window.addEventListener("load", setLineWidth);
 function setLineWidth() {
-  count = 0;
+  count = 0; // load되었다는 뚯은 그림판이 초기화 되었기에 count 0으로 설정함
   ctx.lineWidth = lineWidth;
   document.querySelector(".show-line-width").innerHTML = lineWidth;
 }
@@ -103,6 +104,7 @@ function onMouseUp() {
     ctx.beginPath();
     isPainting = false;
   } else if (usermode === "fill" && isPainting) {
+    //채울 공간의 색상이 fill모드에서 설정해놓은 색으로 만들기 위함
     ctx.fillStyle = fillcolor;
     ctx.fill();
     ctx.beginPath();
@@ -119,6 +121,9 @@ function changeWidth() {
 }
 
 // 선 색상 변경 시키기 //
+// 왜 fillcolor와 backgroundcolor 변수를 만들었는가 ?
+// => fill과 배경을 바꾸는 것 모두 fill()함수를 사용하기에 fillStyle이 충돌한다.
+// 그래서 fill() 전에 fillStyle을 각각의 mode에 맞는 color로 변경시켜줘야한다.
 var backgroundcolor = "#FFFFFF";
 var fillcolor = document.querySelector(".line-color").value;
 function changeColor() {
@@ -130,6 +135,7 @@ function changeColor() {
     ctx.fillStyle = color;
     backgroundcolor = color;
   } else if (usermode === "eraser-btn") {
+    // count==0 배경이 흰색인 경우 == 배경 색이 한 번도 바뀐 적 없는 경우
     if (count === 0) {
       ctx.strokeStyle = "#FFFFFF";
       backgroundcolor = "#FFFFFF";
