@@ -260,3 +260,20 @@ select {
   border-radius: 30px;
   padding: 0px 10px;
 }
+
+/* 화면 크기에 따른 css 변경 */
+
+@media (max-height: 750px) {
+  .color-box {
+    margin: 10px 0px;
+  }
+  .line-color {
+    height: 150px;
+  }
+  #brushmode {
+    margin: 9px 0px;
+  }
+  .brush-mode {
+    align-items: center;
+  }
+}
