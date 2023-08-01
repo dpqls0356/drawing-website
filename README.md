@@ -1,9 +1,8 @@
 # Canvas API를 이용해 그림판 만들기
-
+*github-pages는 version2 branch의 코드로 만들어졌다.<br/>*
 <br/>
 
 노마드코더의 바닐라 JS로 그림 앱 만들기 강의를 듣고 만들어 본 그림판<br/>
-main branch는 version2 파일의 코드로 구현된 웹<br/>
 주소 : https://dpqls0356.github.io/drawing-website/
 <br/><br/>
 
